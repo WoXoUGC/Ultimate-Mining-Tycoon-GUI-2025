@@ -303,7 +303,7 @@ UICorner_11.Parent = resetc4button
 
 -- Scripts:
 
-local function EGNYWR_fake_script() -- Showhide.show/hide button 
+local function INPMCR_fake_script() -- Showhide.show/hide button 
 	local script = Instance.new('LocalScript', Showhide)
 
 	local button = script.Parent
@@ -321,8 +321,8 @@ local function EGNYWR_fake_script() -- Showhide.show/hide button
 	end)
 	
 end
-coroutine.wrap(EGNYWR_fake_script)()
-local function IOBPCPB_fake_script() -- OverFrame.draggable 
+coroutine.wrap(INPMCR_fake_script)()
+local function PIZNK_fake_script() -- OverFrame.draggable 
 	local script = Instance.new('LocalScript', OverFrame)
 
 	local dragFrame = script.Parent
@@ -361,8 +361,8 @@ local function IOBPCPB_fake_script() -- OverFrame.draggable
 	end)
 	
 end
-coroutine.wrap(IOBPCPB_fake_script)()
-local function ASWUNWY_fake_script() -- sellore.sell ore tp 
+coroutine.wrap(PIZNK_fake_script)()
+local function UKNKUIM_fake_script() -- sellore.sell ore tp 
 	local script = Instance.new('LocalScript', sellore)
 
 	local player = game.Players.LocalPlayer
@@ -434,8 +434,8 @@ local function ASWUNWY_fake_script() -- sellore.sell ore tp
 	end)
 	
 end
-coroutine.wrap(ASWUNWY_fake_script)()
-local function JBVM_fake_script() -- mine.mine tp 
+coroutine.wrap(UKNKUIM_fake_script)()
+local function FULE_fake_script() -- mine.mine tp 
 	local script = Instance.new('LocalScript', mine)
 
 	--// Services
@@ -455,8 +455,8 @@ local function JBVM_fake_script() -- mine.mine tp
 	end)
 	
 end
-coroutine.wrap(JBVM_fake_script)()
-local function STOMB_fake_script() -- tycoon.tycoon tp 
+coroutine.wrap(FULE_fake_script)()
+local function KKQXR_fake_script() -- tycoon.tycoon tp 
 	local script = Instance.new('LocalScript', tycoon)
 
 	local player = game.Players.LocalPlayer
@@ -503,8 +503,8 @@ local function STOMB_fake_script() -- tycoon.tycoon tp
 	end)
 	
 end
-coroutine.wrap(STOMB_fake_script)()
-local function XZYKUO_fake_script() -- shop.shop tp 
+coroutine.wrap(KKQXR_fake_script)()
+local function TTDVCH_fake_script() -- shop.shop tp 
 	local script = Instance.new('LocalScript', shop)
 
 	--// Services
@@ -524,8 +524,8 @@ local function XZYKUO_fake_script() -- shop.shop tp
 	end)
 	
 end
-coroutine.wrap(XZYKUO_fake_script)()
-local function KBLC_fake_script() -- TextBox.WalkSpeedScript 
+coroutine.wrap(TTDVCH_fake_script)()
+local function SFJYWQ_fake_script() -- TextBox.WalkSpeedScript 
 	local script = Instance.new('LocalScript', TextBox)
 
 	-- Get reference to the TextBox that this LocalScript is inside
@@ -561,8 +561,8 @@ local function KBLC_fake_script() -- TextBox.WalkSpeedScript
 	end)
 	
 end
-coroutine.wrap(KBLC_fake_script)()
-local function EHPWJED_fake_script() -- blocksEspButton.blocks esp script 
+coroutine.wrap(SFJYWQ_fake_script)()
+local function RTCZIU_fake_script() -- blocksEspButton.blocks esp script 
 	local script = Instance.new('LocalScript', blocksEspButton)
 
 	--// Services
@@ -747,8 +747,8 @@ local function EHPWJED_fake_script() -- blocksEspButton.blocks esp script
 	end)
 	
 end
-coroutine.wrap(EHPWJED_fake_script)()
-local function BEJYA_fake_script() -- Frame.right-shift 
+coroutine.wrap(RTCZIU_fake_script)()
+local function OQBZD_fake_script() -- Frame.right-shift 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Get references to the necessary UI elements
@@ -774,8 +774,8 @@ local function BEJYA_fake_script() -- Frame.right-shift
 	UserInputService.InputBegan:Connect(toggleFrameVisibility)
 	
 end
-coroutine.wrap(BEJYA_fake_script)()
-local function NTIFX_fake_script() -- c4shop.c4 shop tp 
+coroutine.wrap(OQBZD_fake_script)()
+local function VIJPO_fake_script() -- c4shop.c4 shop tp 
 	local script = Instance.new('LocalScript', c4shop)
 
 	--// Services
@@ -794,8 +794,8 @@ local function NTIFX_fake_script() -- c4shop.c4 shop tp
 		end
 	end)
 end
-coroutine.wrap(NTIFX_fake_script)()
-local function WOGWPW_fake_script() -- resetc4button.mobile reset c4 button 
+coroutine.wrap(VIJPO_fake_script)()
+local function ETDSH_fake_script() -- resetc4button.mobile reset c4 button 
 	local script = Instance.new('LocalScript', resetc4button)
 
 	local Players = game:GetService("Players")
@@ -804,64 +804,60 @@ local function WOGWPW_fake_script() -- resetc4button.mobile reset c4 button
 	local camera = workspace.CurrentCamera
 	
 	local player = Players.LocalPlayer
-	local button = script.Parent  -- This refers to the "Reset C4 Button" text button
-	local frame = button.Parent  -- Assuming the button is inside a frame
+	local button = script.Parent  -- "Reset C4 Button"
+	local character = player.Character or player.CharacterAdded:Wait()
 	
-	local savedCFrame = nil
-	local savedCameraCFrame = nil
-	local savedWalkSpeed = nil
+	local savedCFrame
+	local savedCameraCFrame
+	local savedWalkSpeed
 	
-	-- Reset C4 function
 	local function resetC4()
-		local character = player.Character
-		if not character then return end
-	
+		character = player.Character or player.CharacterAdded:Wait()
 		local root = character:FindFirstChild("HumanoidRootPart")
 		local humanoid = character:FindFirstChildOfClass("Humanoid")
 	
-		if root and humanoid then
-			-- Step 1: Save player position and camera position
-			savedCFrame = root.CFrame
-			savedCameraCFrame = camera.CFrame
-			savedWalkSpeed = humanoid.WalkSpeed
+		if not (root and humanoid) then return end
 	
-			-- Step 2: Reset the player's avatar (set health to 0 to "kill")
-			humanoid.Health = 0
+		-- Save position, camera, walkspeed
+		savedCFrame = root.CFrame
+		savedCameraCFrame = camera.CFrame
+		savedWalkSpeed = humanoid.WalkSpeed
 	
-			-- Wait for respawn
-			player.CharacterAdded:Wait()
-			task.wait(0) -- small buffer to ensure the character has fully respawned
+		-- Reset character
+		humanoid.Health = 0
 	
-			-- Step 3: Teleport to saved position and restore camera
-			local newCharacter = player.Character
-			if newCharacter then
-				local newRoot = newCharacter:WaitForChild("HumanoidRootPart")
-				local newHumanoid = newCharacter:WaitForChild("Humanoid")
+		-- Wait for new character
+		player.CharacterAdded:Wait()
+		task.wait(0.2)
 	
-				-- Restore position and camera
-				newRoot.CFrame = savedCFrame
-				camera.CFrame = savedCameraCFrame
-				newHumanoid.WalkSpeed = savedWalkSpeed
+		character = player.Character or player.CharacterAdded:Wait()
+		local newRoot = character:WaitForChild("HumanoidRootPart")
+		local newHumanoid = character:WaitForChild("Humanoid")
 	
-				-- Step 4: Simulate pressing the "2" key (the "2" key event will be sent after a slight delay)
-				task.wait(0.1)
-				VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Two, false, game)
-				VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Two, false, game)
-			end
-		end
+		-- Restore data
+		newRoot.CFrame = savedCFrame
+		newHumanoid.WalkSpeed = savedWalkSpeed
+		camera.CFrame = savedCameraCFrame
+	
+		-- Simulate pressing "2"
+		task.wait(0.2)
+		VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.Two, false, game)
+		VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.Two, false, game)
 	end
 	
-	-- PC: Press F key to reset
-	UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		if not gameProcessed and input.KeyCode == Enum.KeyCode.F then
-			resetC4()
-		end
-	end)
-	
-	-- Mobile + PC: Press the "Reset C4 Button" to trigger the reset
+	-- 🔘 When player clicks the GUI button (mobile or PC)
 	button.MouseButton1Click:Connect(function()
 		resetC4()
 	end)
 	
+	-- 🖱️ When PC player presses "F"
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+		if input.KeyCode == Enum.KeyCode.F then
+			resetC4()
+			print("Triggered")
+		end
+	end)
+	
 end
-coroutine.wrap(WOGWPW_fake_script)()
+coroutine.wrap(ETDSH_fake_script)()
